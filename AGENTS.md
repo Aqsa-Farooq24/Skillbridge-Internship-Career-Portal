@@ -21,3 +21,8 @@ Use the official SkillBridge bridge logo with the gold-on-navy color scheme.
 
 ## Design Mood
 Create a clean, modern, and professional interface that inspires trust and career growth. Use consistent spacing, rounded corners, and subtle shadows while keeping the focus on the content rather than decorative elements.
+
+## Style Note
+Use Poppins for headings and Inter for body text.
+
+Use the official SkillBridge color palette (#081C2B, #0D2538, #D4C08A, #F5F5F2) to maintain a professional, modern, and trustworthy visual identity across every page.
