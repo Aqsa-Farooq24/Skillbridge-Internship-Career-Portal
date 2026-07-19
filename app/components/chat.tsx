@@ -22,29 +22,29 @@ export default function Chat() {
 
 
     return (
-        <div className="flex flex-col h-[80vh] max-w-4xl mx-auto">
+        <div className="flex flex-col h-[80vh] w-full max-w-4xl mx-auto px-3 sm:px-6">
 
             {/* Chat Header */}
-            <div className="mb-4 rounded-xl border border-[#D4C08A]/20 bg-[#0D2433] p-4">
+            <div className="mb-4 rounded-xl border border-[#D4C08A]/20 bg-[#0D2433] p-3 sm:p-4">
 
                 <div className="flex items-center gap-3">
 
-                    <div className="h-12 w-12 rounded-full bg-[#D4C08A] flex items-center justify-center text-2xl">
+                    <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full bg-[#D4C08A] flex items-center justify-center text-xl sm:text-2xl">
                         🤖
                     </div>
 
                     <div>
-                        <h1 className="text-xl font-bold text-[#D4C08A]">
+                        <h1 className="text-lg sm:text-xl font-bold text-[#D4C08A]">
                             SkillBridge AI
                         </h1>
 
-                        <p className="text-sm text-gray-300">
+                        <p className="text-xs sm:text-sm text-gray-300">
                             Your internship & career assistant
                         </p>
                     </div>
 
 
-                    <div className="ml-auto flex items-center gap-2 text-sm text-green-400">
+                    <div className="ml-auto flex items-center gap-2 text-xs sm:text-sm text-green-400">
                         <span className="h-2 w-2 rounded-full bg-green-400"></span>
                         Online
                     </div>
@@ -55,21 +55,21 @@ export default function Chat() {
 
 
             {/* Chat Area */}
-            <div className="flex-1 border border-[#D4C08A]/20 rounded-xl p-6 overflow-y-auto bg-[#0D2433]">
+            <div className="flex-1 border border-[#D4C08A]/20 rounded-xl p-3 sm:p-6 overflow-y-auto bg-[#0D2433]">
 
                 {messages.length === 0 ? (
 
                     <div className="h-full flex flex-col items-center justify-center text-center">
 
-                        <div className="text-5xl mb-4">
+                        <div className="text-4xl sm:text-5xl mb-4">
                             🤖
                         </div>
 
-                        <h2 className="text-3xl font-bold text-[#D4C08A] mb-4">
+                        <h2 className="text-2xl sm:text-3xl font-bold text-[#D4C08A] mb-4">
                             Welcome to SkillBridge AI
                         </h2>
 
-                        <p className="text-gray-300 max-w-xl mb-8">
+                        <p className="text-sm sm:text-base text-gray-300 max-w-xl mb-8">
                             Get internship recommendations, resume feedback,
                             interview preparation and career guidance powered by AI.
                         </p>
@@ -77,44 +77,22 @@ export default function Chat() {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
 
-                            <button
-                                onClick={() =>
-                                    setInput("Suggest frontend internships for me")
-                                }
-                                className="rounded-xl border border-[#D4C08A]/40 p-4 hover:bg-[#102738] transition text-white"
-                            >
-                                💼 Frontend Internships
-                            </button>
+                            {[
+                                ["💼 Frontend Internships", "Suggest frontend internships for me"],
+                                ["📄 Resume Review", "Review my resume"],
+                                ["🎤 Interview Prep", "Prepare me for an interview"],
+                                ["🚀 Career Roadmap", "Create a frontend career roadmap"]
+                            ].map(([title, text]) => (
 
+                                <button
+                                    key={title}
+                                    onClick={() => setInput(text)}
+                                    className="rounded-xl border border-[#D4C08A]/40 p-4 hover:bg-[#102738] transition text-white text-sm sm:text-base"
+                                >
+                                    {title}
+                                </button>
 
-                            <button
-                                onClick={() =>
-                                    setInput("Review my resume")
-                                }
-                                className="rounded-xl border border-[#D4C08A]/40 p-4 hover:bg-[#102738] transition text-white"
-                            >
-                                📄 Resume Review
-                            </button>
-
-
-                            <button
-                                onClick={() =>
-                                    setInput("Prepare me for an interview")
-                                }
-                                className="rounded-xl border border-[#D4C08A]/40 p-4 hover:bg-[#102738] transition text-white"
-                            >
-                                🎤 Interview Prep
-                            </button>
-
-
-                            <button
-                                onClick={() =>
-                                    setInput("Create a frontend career roadmap")
-                                }
-                                className="rounded-xl border border-[#D4C08A]/40 p-4 hover:bg-[#102738] transition text-white"
-                            >
-                                🚀 Career Roadmap
-                            </button>
+                            ))}
 
                         </div>
 
@@ -139,14 +117,14 @@ export default function Chat() {
 
 
                                 {message.role !== "user" && (
-                                    <div className="h-9 w-9 rounded-full bg-[#D4C08A] flex items-center justify-center text-lg">
+                                    <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-[#D4C08A] flex items-center justify-center text-lg">
                                         🤖
                                     </div>
                                 )}
 
 
                                 <div
-                                    className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                                    className={`max-w-[90%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-3 text-sm sm:text-base ${
                                         message.role === "user"
                                             ? "bg-[#D4C08A] text-[#081C2B]"
                                             : "bg-[#102738] text-white"
@@ -165,7 +143,7 @@ export default function Chat() {
 
 
                                 {message.role === "user" && (
-                                    <div className="h-9 w-9 rounded-full bg-gray-700 flex items-center justify-center text-lg">
+                                    <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-gray-700 flex items-center justify-center text-lg">
                                         👤
                                     </div>
                                 )}
@@ -180,11 +158,11 @@ export default function Chat() {
 
                             <div className="flex items-center gap-2">
 
-                                <div className="h-9 w-9 rounded-full bg-[#D4C08A] flex items-center justify-center">
+                                <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-[#D4C08A] flex items-center justify-center">
                                     🤖
                                 </div>
 
-                                <div className="bg-[#102738] text-gray-300 rounded-2xl px-4 py-3">
+                                <div className="bg-[#102738] text-gray-300 rounded-2xl px-4 py-3 text-sm sm:text-base">
 
                                     <span>
                                         SkillBridge AI is thinking
@@ -212,7 +190,7 @@ export default function Chat() {
 
 
             {/* Input */}
-            <div className="mt-4 flex gap-3">
+            <div className="mt-4 flex flex-col sm:flex-row gap-3">
 
                 <input
                     value={input}
@@ -228,7 +206,7 @@ export default function Chat() {
                     }}
                     type="text"
                     placeholder="Ask about internships..."
-                    className="flex-1 rounded-lg border border-[#D4C08A]/40 bg-[#102738] px-4 py-3 text-white outline-none"
+                    className="flex-1 rounded-lg border border-[#D4C08A]/40 bg-[#102738] px-4 py-3 text-white outline-none text-sm sm:text-base"
                 />
 
 
@@ -236,7 +214,7 @@ export default function Chat() {
 
                     <button
                         onClick={() => stop()}
-                        className="rounded-lg px-6 py-3 bg-red-500 text-white font-semibold"
+                        className="w-full sm:w-auto rounded-lg px-6 py-3 bg-red-500 text-white font-semibold"
                     >
                         Stop
                     </button>
@@ -255,7 +233,7 @@ export default function Chat() {
                             setInput("");
 
                         }}
-                        className="rounded-lg px-6 py-3 bg-[#D4C08A] text-[#081C2B] font-semibold"
+                        className="w-full sm:w-auto rounded-lg px-6 py-3 bg-[#D4C08A] text-[#081C2B] font-semibold"
                     >
                         Send
                     </button>
