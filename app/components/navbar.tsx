@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { Search, Bell, User, X } from "lucide-react";
+import { Search, Bell, User, X, Menu } from "lucide-react";
 
 export default function Navbar() {
     const router = useRouter();
@@ -11,30 +11,31 @@ export default function Navbar() {
     const [showLogin, setShowLogin] = useState(false);
     const [showRegister, setShowRegister] = useState(false);
     const [search, setSearch] = useState("");
+    const [showMenu, setShowMenu] = useState(false);
 
-const searchItems = [
-  // Internships
-  { title: "Frontend Internship", path: "/internship" },
-  { title: "Backend Internship", path: "/internship" },
-  { title: "Software Engineering Internship", path: "/internship" },
-  { title: "UI/UX Design Internship", path: "/internship" },
+    const searchItems = [
+        // Internships
+        { title: "Frontend Internship", path: "/internship" },
+        { title: "Backend Internship", path: "/internship" },
+        { title: "Software Engineering Internship", path: "/internship" },
+        { title: "UI/UX Design Internship", path: "/internship" },
 
-  // Jobs
-  { title: "Frontend Developer", path: "/jobs" },
-  { title: "Backend Developer", path: "/jobs" },
-  { title: "Full Stack Developer", path: "/jobs" },
-  { title: "MERN Stack Developer", path: "/jobs" },
-  { title: "Software Engineer", path: "/jobs" },
+        // Jobs
+        { title: "Frontend Developer", path: "/jobs" },
+        { title: "Backend Developer", path: "/jobs" },
+        { title: "Full Stack Developer", path: "/jobs" },
+        { title: "MERN Stack Developer", path: "/jobs" },
+        { title: "Software Engineer", path: "/jobs" },
 
-  // Companies
-  { title: "Google", path: "/companies" },
-  { title: "Microsoft", path: "/companies" },
-  { title: "Adobe", path: "/companies" },
-  { title: "Systems Limited", path: "/companies" },
-  { title: "10Pearls", path: "/companies" },
-  { title: "Arbisoft", path: "/companies" },
-  { title: "Companies", path: "/companies" },
-];
+        // Companies
+        { title: "Google", path: "/companies" },
+        { title: "Microsoft", path: "/companies" },
+        { title: "Adobe", path: "/companies" },
+        { title: "Systems Limited", path: "/companies" },
+        { title: "10Pearls", path: "/companies" },
+        { title: "Arbisoft", path: "/companies" },
+        { title: "Companies", path: "/companies" },
+    ];
 
     const filteredItems =
         search.trim() === ""
@@ -87,7 +88,23 @@ const searchItems = [
 
                     {/* Right Side */}
                     <div className="flex items-center gap-4">
-
+                        {/* Mobile Menu */}
+                        <button
+                            onClick={() => setShowMenu(!showMenu)}
+                            className="md:hidden p-2 rounded-full hover:bg-[#10293D] transition"
+                        >
+                            {showMenu ? (
+                                <X
+                                    size={24}
+                                    className="text-white hover:text-[#D4C08A]"
+                                />
+                            ) : (
+                                <Menu
+                                    size={24}
+                                    className="text-white hover:text-[#D4C08A]"
+                                />
+                            )}
+                        </button>
                         {/* Search */}
                         <button
                             onClick={() => setShowSearch(!showSearch)}
@@ -127,7 +144,64 @@ const searchItems = [
                     </div>
 
                 </div>
+                {/* Mobile Navigation */}
+                {showMenu && (
+                    <div className="md:hidden border-t border-[#D4C08A]/20 bg-[#081C2B]">
 
+                        <div className="flex flex-col px-6 py-4 space-y-4">
+
+                            <Link
+                                href="/"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                Home
+                            </Link>
+
+                            <Link
+                                href="/about"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                About
+                            </Link>
+
+                            <Link
+                                href="/internship"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                Internships
+                            </Link>
+
+                            <Link
+                                href="/jobs"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                Jobs
+                            </Link>
+
+                            <Link
+                                href="/companies"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                Companies
+                            </Link>
+
+                            <Link
+                                href="/contact"
+                                onClick={() => setShowMenu(false)}
+                                className="text-white hover:text-[#D4C08A]"
+                            >
+                                Contact
+                            </Link>
+
+                        </div>
+
+                    </div>
+                )}
                 {/* Search Bar */}
 
                 {showSearch && (
