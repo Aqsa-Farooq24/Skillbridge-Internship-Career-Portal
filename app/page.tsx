@@ -1,3 +1,4 @@
+import Link from "next/link";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#081C2B] text-[#F5F5F2] flex items-center">
@@ -21,13 +22,19 @@ export default function HomePage() {
         </p>
 
         <div className="mt-10 flex gap-5">
-          <button className="rounded-lg bg-[#D4C08A] px-6 py-3 font-semibold text-[#081C2B] hover:opacity-90">
+          <Link
+            href="/internship"
+            className="rounded-lg bg-[#D4C08A] px-6 py-3 font-semibold text-[#081C2B] hover:opacity-90 transition"
+          >
             Explore Internships
-          </button>
+          </Link>
 
-          <button className="rounded-lg border border-[#D4C08A] px-6 py-3 font-semibold text-[#D4C08A] hover:bg-[#D4C08A] hover:text-[#081C2B]">
+          <Link
+            href="/about"
+            className="rounded-lg border border-[#D4C08A] px-6 py-3 font-semibold text-[#D4C08A] hover:bg-[#D4C08A] hover:text-[#081C2B] transition"
+          >
             Learn More
-          </button>
+          </Link>
         </div>
 
       </section>
