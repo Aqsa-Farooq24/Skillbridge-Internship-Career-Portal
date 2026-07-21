@@ -18,7 +18,7 @@ export default function DashboardPage() {
 
         <h1 className="text-4xl md:text-5xl font-bold">
           Welcome Back,
-          <span className="text-[#D4C08A]"> Aqsa 👋</span>
+          <span className="text-[#D4C08A]"> Aqsa</span>
         </h1>
 
         <p className="text-gray-300 mt-4">

@@ -78,10 +78,10 @@ export default function Chat() {
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
 
                             {[
-                                ["💼 Frontend Internships", "Suggest frontend internships for me"],
-                                ["📄 Resume Review", "Review my resume"],
-                                ["🎤 Interview Prep", "Prepare me for an interview"],
-                                ["🚀 Career Roadmap", "Create a frontend career roadmap"]
+                                ["Frontend Internships", "Suggest frontend internships for me"],
+                                ["Resume Review", "Review my resume"],
+                                ["Interview Prep", "Prepare me for an interview"],
+                                ["Career Roadmap", "Create a frontend career roadmap"]
                             ].map(([title, text]) => (
 
                                 <button
@@ -131,13 +131,90 @@ export default function Chat() {
                                     }`}
                                 >
 
-                                    {message.parts.map((part, index) =>
-                                        part.type === "text" ? (
-                                            <p key={index}>
-                                                {part.text}
-                                            </p>
-                                        ) : null
-                                    )}
+                                  {message.parts.map((part: any, index) => {
+  if (part.type === "text") {
+    return <p key={index}>{part.text}</p>;
+  }
+
+  if (part.type === "tool-scoreResume") {
+    switch (part.state) {
+      case "input-streaming":
+        return (
+          <div
+            key={index}
+            className="mt-3 rounded-lg bg-yellow-500/20 border border-yellow-500 p-3"
+          >
+            ⏳ Analyzing resume...
+          </div>
+        );
+
+      case "input-available":
+        return (
+          <div
+            key={index}
+            className="mt-3 rounded-lg bg-blue-500/20 border border-blue-500 p-3"
+          >
+            <h3 className="font-semibold mb-2">
+              Resume Analysis Started
+            </h3>
+
+            <p>
+              Job Role:
+              <strong> {part.input.jobRole}</strong>
+            </p>
+          </div>
+        );
+
+      case "output-available":
+        return (
+          <div
+            key={index}
+            className="mt-3 rounded-lg bg-green-500/20 border border-green-500 p-4"
+          >
+            <h2 className="font-bold text-lg mb-3">
+              Resume Score
+            </h2>
+
+            <div className="text-3xl font-bold text-green-400">
+              {part.output.score}%
+            </div>
+
+            <h3 className="mt-4 font-semibold">
+              Strengths
+            </h3>
+
+            <ul className="list-disc ml-6">
+              {part.output.strengths.map((item: string) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+
+            <h3 className="mt-4 font-semibold">
+              Suggestions
+            </h3>
+
+            <ul className="list-disc ml-6">
+              {part.output.suggestions.map((item: string) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </div>
+        );
+
+      case "output-error":
+        return (
+          <div
+            key={index}
+            className="mt-3 rounded-lg bg-red-500/20 border border-red-500 p-3"
+          >
+            Resume analysis failed.
+          </div>
+        );
+    }
+  }
+
+  return null;
+})}
 
                                 </div>
 
