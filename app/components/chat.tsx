@@ -8,7 +8,13 @@ export default function Chat() {
     const [input, setInput] = useState("");
     const chatEndRef = useRef<HTMLDivElement>(null);
 
-    const { messages, sendMessage, status, stop } = useChat({
+    const {
+        messages,
+        sendMessage,
+        status,
+        stop,
+        error,
+    } = useChat({
         transport: new DefaultChatTransport({
             api: "/api/chat",
         }),
@@ -108,11 +114,10 @@ export default function Chat() {
 
                             <div
                                 key={message.id}
-                                className={`flex items-end gap-2 ${
-                                    message.role === "user"
-                                        ? "justify-end"
-                                        : "justify-start"
-                                }`}
+                                className={`flex items-end gap-2 ${message.role === "user"
+                                    ? "justify-end"
+                                    : "justify-start"
+                                    }`}
                             >
 
 
@@ -124,97 +129,96 @@ export default function Chat() {
 
 
                                 <div
-                                    className={`max-w-[90%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-3 text-sm sm:text-base ${
-                                        message.role === "user"
-                                            ? "bg-[#D4C08A] text-[#081C2B]"
-                                            : "bg-[#102738] text-white"
-                                    }`}
+                                    className={`max-w-[90%] sm:max-w-[80%] rounded-2xl px-3 sm:px-4 py-3 text-sm sm:text-base ${message.role === "user"
+                                        ? "bg-[#D4C08A] text-[#081C2B]"
+                                        : "bg-[#102738] text-white"
+                                        }`}
                                 >
 
-                                  {message.parts.map((part: any, index) => {
-  if (part.type === "text") {
-    return <p key={index}>{part.text}</p>;
-  }
+                                    {message.parts.map((part: any, index) => {
+                                        if (part.type === "text") {
+                                            return <p key={index}>{part.text}</p>;
+                                        }
 
-  if (part.type === "tool-scoreResume") {
-    switch (part.state) {
-      case "input-streaming":
-        return (
-          <div
-            key={index}
-            className="mt-3 rounded-lg bg-yellow-500/20 border border-yellow-500 p-3"
-          >
-            ⏳ Analyzing resume...
-          </div>
-        );
+                                        if (part.type === "tool-scoreResume") {
+                                            switch (part.state) {
+                                                case "input-streaming":
+                                                    return (
+                                                        <div
+                                                            key={index}
+                                                            className="mt-3 rounded-lg bg-yellow-500/20 border border-yellow-500 p-3"
+                                                        >
+                                                            Analyzing resume...
+                                                        </div>
+                                                    );
 
-      case "input-available":
-        return (
-          <div
-            key={index}
-            className="mt-3 rounded-lg bg-blue-500/20 border border-blue-500 p-3"
-          >
-            <h3 className="font-semibold mb-2">
-              Resume Analysis Started
-            </h3>
+                                                case "input-available":
+                                                    return (
+                                                        <div
+                                                            key={index}
+                                                            className="mt-3 rounded-lg bg-blue-500/20 border border-blue-500 p-3"
+                                                        >
+                                                            <h3 className="font-semibold mb-2">
+                                                                Resume Analysis Started
+                                                            </h3>
 
-            <p>
-              Job Role:
-              <strong> {part.input.jobRole}</strong>
-            </p>
-          </div>
-        );
+                                                            <p>
+                                                                Job Role:
+                                                                <strong> {part.input.jobRole}</strong>
+                                                            </p>
+                                                        </div>
+                                                    );
 
-      case "output-available":
-        return (
-          <div
-            key={index}
-            className="mt-3 rounded-lg bg-green-500/20 border border-green-500 p-4"
-          >
-            <h2 className="font-bold text-lg mb-3">
-              Resume Score
-            </h2>
+                                                case "output-available":
+                                                    return (
+                                                        <div
+                                                            key={index}
+                                                            className="mt-3 rounded-lg bg-green-500/20 border border-green-500 p-4"
+                                                        >
+                                                            <h2 className="font-bold text-lg mb-3">
+                                                                Resume Score
+                                                            </h2>
 
-            <div className="text-3xl font-bold text-green-400">
-              {part.output.score}%
-            </div>
+                                                            <div className="text-3xl font-bold text-green-400">
+                                                                {part.output.score}%
+                                                            </div>
 
-            <h3 className="mt-4 font-semibold">
-              Strengths
-            </h3>
+                                                            <h3 className="mt-4 font-semibold">
+                                                                Strengths
+                                                            </h3>
 
-            <ul className="list-disc ml-6">
-              {part.output.strengths.map((item: string) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
+                                                            <ul className="list-disc ml-6">
+                                                                {part.output.strengths.map((item: string) => (
+                                                                    <li key={item}>{item}</li>
+                                                                ))}
+                                                            </ul>
 
-            <h3 className="mt-4 font-semibold">
-              Suggestions
-            </h3>
+                                                            <h3 className="mt-4 font-semibold">
+                                                                Suggestions
+                                                            </h3>
 
-            <ul className="list-disc ml-6">
-              {part.output.suggestions.map((item: string) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        );
+                                                            <ul className="list-disc ml-6">
+                                                                {part.output.suggestions.map((item: string) => (
+                                                                    <li key={item}>{item}</li>
+                                                                ))}
+                                                            </ul>
+                                                        </div>
+                                                    );
 
-      case "output-error":
-        return (
-          <div
-            key={index}
-            className="mt-3 rounded-lg bg-red-500/20 border border-red-500 p-3"
-          >
-            Resume analysis failed.
-          </div>
-        );
-    }
-  }
+                                                case "output-error":
+                                                    return (
+                                                        <div
+                                                            key={index}
+                                                            className="mt-3 rounded-lg bg-red-500/20 border border-red-500 p-3"
+                                                        >
+                                                            Resume analysis failed.
+                                                        </div>
+                                                    );
+                                            }
+                                        }
 
-  return null;
-})}
+                                        return null;
+                                    })}
 
                                 </div>
 
@@ -231,28 +235,18 @@ export default function Chat() {
 
 
 
-                        {status === "streaming" && (
-
-                            <div className="flex items-center gap-2">
-
-                                <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-[#D4C08A] flex items-center justify-center">
+                        {(status === "submitted" || status === "streaming") && (
+                            <div className="flex items-start gap-3 mt-4">
+                                <div className="w-10 h-10 rounded-full bg-[#D4C08A] flex items-center justify-center">
                                     🤖
                                 </div>
 
-                                <div className="bg-[#102738] text-gray-300 rounded-2xl px-4 py-3 text-sm sm:text-base">
-
-                                    <span>
-                                        SkillBridge AI is thinking
-                                    </span>
-
-                                    <span className="ml-2 animate-pulse">
-                                        ● ● ●
-                                    </span>
-
+                                <div className="bg-[#102B3F] rounded-xl p-4 w-full max-w-md animate-pulse">
+                                    <div className="h-4 bg-gray-600 rounded w-3/4 mb-3"></div>
+                                    <div className="h-4 bg-gray-600 rounded w-full mb-3"></div>
+                                    <div className="h-4 bg-gray-600 rounded w-2/3"></div>
                                 </div>
-
                             </div>
-
                         )}
 
 
@@ -264,7 +258,24 @@ export default function Chat() {
 
             </div>
 
+            {error && (
+                <div className="mt-4 rounded-xl border border-red-500 bg-red-500/10 p-4">
+                    <h3 className="font-semibold text-red-400">
+                        Something went wrong
+                    </h3>
 
+                    <p className="mt-2 text-sm text-gray-300">
+                        The last message couldn't be processed. Please try again.
+                    </p>
+
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="mt-4 rounded-lg bg-red-500 px-4 py-2 text-white font-medium hover:bg-red-600"
+                    >
+                        Retry
+                    </button>
+                </div>
+            )}
 
             {/* Input */}
             <div className="mt-4 flex flex-col sm:flex-row gap-3">
