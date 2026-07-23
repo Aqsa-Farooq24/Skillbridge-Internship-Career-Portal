@@ -61,8 +61,7 @@ export default function Footer() {
 
         <div className="border-t border-[#D4C08A]/20 mt-10 pt-6 text-center text-gray-500">
 
-          © 2026 SkillBridge. All Rights Reserved.
-
+         © 2026 SkillBridge. Designed & Developed by Aqsa Farooq. All Rights Reserved.
         </div>
 
       </div>
