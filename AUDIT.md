@@ -210,7 +210,7 @@ The website was successfully audited using Lighthouse, WAVE, and keyboard-only t
 
 !\[After Lighthouse](./images/lighthouse-after.png)
 
-## Before WAVE
+\## Before WAVE
 
 
 
