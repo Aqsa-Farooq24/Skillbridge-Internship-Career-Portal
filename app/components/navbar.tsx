@@ -90,6 +90,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4">
                         {/* Mobile Menu */}
                         <button
+                            aria-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
                             onClick={() => setShowMenu(!showMenu)}
                             className="md:hidden p-2 rounded-full hover:bg-[#10293D] transition"
                         >
@@ -107,6 +108,7 @@ export default function Navbar() {
                         </button>
                         {/* Search */}
                         <button
+                            aria-label="Open search"
                             onClick={() => setShowSearch(!showSearch)}
                             className="p-2 rounded-full hover:bg-[#10293D] transition"
                         >
@@ -117,7 +119,10 @@ export default function Navbar() {
                         </button>
 
                         {/* Bell */}
-                        <button className="relative p-2 rounded-full hover:bg-[#10293D] transition">
+                        <button
+                            aria-label="Notifications"
+                            className="relative p-2 rounded-full hover:bg-[#10293D] transition"
+                        >
 
                             <Bell
                                 size={22}
@@ -132,6 +137,7 @@ export default function Navbar() {
 
                         {/* Profile */}
                         <button
+                            aria-label="Open login"
                             onClick={() => setShowLogin(true)}
                             className="w-10 h-10 rounded-full bg-[#D4C08A] flex items-center justify-center hover:scale-105 transition"
                         >
@@ -262,6 +268,7 @@ export default function Navbar() {
                                 )}
 
                                 <button
+                                    aria-label="Close search"
                                     onClick={() => setShowSearch(false)}
                                     className="absolute right-4 top-1/2 -translate-y-1/2"
                                 >
@@ -288,6 +295,7 @@ export default function Navbar() {
                     <div className="bg-[#10293D] rounded-3xl p-8 w-[420px] relative border border-[#D4C08A]/20">
 
                         <button
+                            aria-label="Close login dialog"
                             onClick={() => setShowLogin(false)}
                             className="absolute right-5 top-5"
                         >
@@ -349,6 +357,7 @@ export default function Navbar() {
                     <div className="bg-[#10293D] rounded-3xl p-8 w-[420px] relative border border-[#D4C08A]/20">
 
                         <button
+                            aria-label="Close registration dialog"
                             onClick={() => setShowRegister(false)}
                             className="absolute right-5 top-5"
                         >
