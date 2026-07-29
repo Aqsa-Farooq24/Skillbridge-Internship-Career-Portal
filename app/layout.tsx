@@ -20,6 +20,14 @@ export const metadata: Metadata = {
   title: "SkillBridge - Internship & Career Portal",
   description:
     "A modern internship and career portal for students and companies.",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
 };
 
 export default function RootLayout({
