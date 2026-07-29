@@ -90,7 +90,7 @@ export default function Navbar() {
                     <div className="flex items-center gap-4">
                         {/* Mobile Menu */}
                         <button
-                            ia-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
+                            aria-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
                             onClick={() => setShowMenu(!showMenu)}
                             className="md:hidden p-2 rounded-full hover:bg-[#10293D] transition"
                         >
