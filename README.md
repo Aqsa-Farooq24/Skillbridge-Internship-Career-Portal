@@ -1,4 +1,4 @@
-# SkillBridge – AI Internship & Career Portal
+# SkillBridge – Internship & Career Portal
 
 SkillBridge is an AI-powered internship and career portal built with Next.js, React, Tailwind CSS, and the Vercel AI SDK. It helps Connect students with internships, graduate opportunities, and leading companies through one modern platform.
 
