@@ -99,6 +99,35 @@ The Ask AI Assistant button was designed to communicate its state clearly throug
 * Error: If the simulated request fails (20% failure rate), the button displays a retry state before returning to its idle state.
 * Accessibility: The button includes a visible keyboard focus indicator, prevents repeated clicks during loading, and respects the user's `prefers-reduced-motion` setting by reducing unnecessary motion while preserving visual feedback.
 
+## Performance Note (FE-10)
+
+I tested the 3D AI Assistant using Lighthouse.
+
+Results:
+- Performance: 63
+- Best Practices: 100
+
+To improve the experience, I lazy-loaded the 3D AI Assistant using Next.js dynamic import. I also added reduced-motion support so the robot stops rotating when the user prefers reduced motion. The 3D model is preloaded using `useGLTF.preload()` to make it appear more quickly once the component is rendered.
+
+## What I'd Add With More Time
+
+If I had more time, I would:
+
+- Compress the 3D model to reduce its file size and improve page performance.
+- Add more interactive animations to the 3D AI Assistant.
+- Allow users to interact with the robot, such as changing its color or triggering different animations.
+- Further optimize the application by reducing the unused JavaScript reported by Lighthouse.
+
+## What I Built
+
+I built an interactive 3D AI Assistant for the SkillBridge Internship & Career Portal using React Three Fiber. The homepage features a 3D robot displayed inside an AI Assistant card. When users click the card, a full-screen AI chat interface opens where they can ask questions about internships, careers, and resume guidance.
+
+The 3D experience includes:
+- An interactive 3D robot rendered with React Three Fiber.
+- A rotating robot animation that respects the user's reduced-motion preference.
+- A responsive AI Assistant card that works on desktop and mobile.
+- Lazy loading of the 3D component using Next.js dynamic import to improve the initial page load.
+
 ## Author
 
 Aqsa Farooq

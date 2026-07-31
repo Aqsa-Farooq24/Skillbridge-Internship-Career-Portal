@@ -67,10 +67,6 @@ export default function Chat() {
 
                     <div className="h-full flex flex-col items-center justify-center text-center">
 
-                        <div className="text-4xl sm:text-5xl mb-4">
-                            🤖
-                        </div>
-
                         <h2 className="text-2xl sm:text-3xl font-bold text-[#D4C08A] mb-4">
                             Welcome to SkillBridge AI
                         </h2>

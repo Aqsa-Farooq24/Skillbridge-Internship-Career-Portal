@@ -1,5 +1,5 @@
 import Link from "next/link";
-import FloatingAIButton from "@/app/components/floatingbutton";
+import FloatingAssistant from "@/app/components/FloatingAssistant";
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-[#081C2B] text-[#F5F5F2] flex items-center">
@@ -39,7 +39,7 @@ export default function HomePage() {
         </div>
 
       </section>
-      <FloatingAIButton />
+      <FloatingAssistant />
     </main>
   );
 }
