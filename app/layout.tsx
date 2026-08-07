@@ -46,10 +46,8 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground font-[var(--font-poppins)]">
-
         <Navbar />
-
-        <main className="flex-1">
+        <main className="flex-1 relative w-full min-w-0">
           {children}
         </main>
         <Footer />
