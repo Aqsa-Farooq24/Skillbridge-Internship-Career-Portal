@@ -2,12 +2,44 @@
 
 import { useEffect, useRef } from 'react';
 
+/**
+ * SkillBridge Aurora Hero
+ * -------------------------------------------------------------
+ * Fullscreen WebGL fragment shader background: a deep-space scene
+ * with twinkling stars and two flowing light ribbons (gold + blue),
+ * rendered behind real hero content (headline, subtext, buttons
+ * passed in as `children`).
+ *
+ * Core uniforms used: u_time, u_resolution, u_mouse (all three).
+ * Responsible defaults baked in below:
+ *   - devicePixelRatio capped at 1.5 (see `resize()`)
+ *   - animation pauses when the browser tab is hidden (see `onVisibility()`)
+ *   - falls back to a static CSS gradient for prefers-reduced-motion
+ *     or when WebGL isn't available at all
+ */
+ 
+// ---------------------------------------------------------------
+// VERTEX SHADER
+// ---------------------------------------------------------------
+// Runs once per vertex of the fullscreen quad (4 corners, see
+// `positions` below). It does no work of its own — it just passes
+// each corner straight through to clip space. All the visuals come
+// from the FRAGMENT shader running per-pixel; this vertex shader
+// only exists because WebGL requires one to rasterize a shape at all.
+
 const VERT_SRC = `
   attribute vec2 a_position;
   void main() {
     gl_Position = vec4(a_position, 0.0, 1.0);
   }
 `;
+
+ 
+// ---------------------------------------------------------------
+// FRAGMENT SHADER
+// ---------------------------------------------------------------
+// Runs once per PIXEL on the screen, every frame. Everything you
+// see — background color, stars, ribbons, grain — is decided here.
 
 const FRAG_SRC = `
   precision highp float;
