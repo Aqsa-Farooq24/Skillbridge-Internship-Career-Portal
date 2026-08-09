@@ -1,4 +1,4 @@
-\# SkillBridge — Capstone Specification
+\# SkillBridge-Internship \& Career Portal — Capstone Specification
 
 
 
