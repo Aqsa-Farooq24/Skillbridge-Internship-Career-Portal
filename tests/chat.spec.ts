@@ -7,7 +7,9 @@ test("primary chat flow", async ({ page }) => {
     page.getByText("Internship & Career Portal")
   ).toBeVisible();
 
-  await page.getByRole("button", { name: /Ask AI Assistant/i }).click();
+  const aiButton = page.getByRole("button", { name: "AI Assistant" });
+  await aiButton.waitFor({ state: "visible", timeout: 60000 });
+  await aiButton.click();
 
   await expect(
     page.getByPlaceholder("Ask about internships...")

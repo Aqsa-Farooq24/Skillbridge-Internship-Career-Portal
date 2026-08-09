@@ -271,6 +271,6 @@ export default function AuroraHero({ children }: { children?: React.ReactNode })
         }}
       />
       <div className="relative z-10 h-full">{children}</div>
-    </div>
+    </div>  
   );
 }
