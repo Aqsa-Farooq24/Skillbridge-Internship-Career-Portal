@@ -38,19 +38,19 @@ SkillBridge is designed for \*\*university students and early-career developers\
 
 
 
-\* \*\*Home\*\* — Introduction to SkillBridge and its main features.
+\* Home — Introduction to SkillBridge and its main features.
 
-\* \*\*About\*\* — Information about the platform.
+\* About — Information about the platform.
 
-\* \*\*Jobs\*\* — Internship and job opportunities.
+\* Jobs — Internship and job opportunities.
 
-\* \*\*Internship\*\* — Internship-focused opportunities and information.
+\* Internship — Internship-focused opportunities and information.
 
-\* \*\*Companies\*\* — Company information and opportunities.
+\* Companies — Company information and opportunities.
 
-\* \*\*Contact\*\* — Contact form for user inquiries.
+\* Contact — Contact form for user inquiries.
 
-\* \*\*AI Assistant\*\* — AI-powered career assistance available to users.
+\* AI Assistant — AI-powered career assistance available to users.
 
 
 
@@ -66,7 +66,7 @@ The application uses structured application data for internships, jobs, companie
 
 
 
-The main AI feature is the \*\*SkillBridge AI Assistant\*\*.
+The main AI feature is the SkillBridge AI Assistant.
 
 
 
@@ -129,6 +129,4 @@ The following features are intentionally outside the scope of this capstone:
 
 
 The project will be considered successful when a student can navigate SkillBridge, explore internship opportunities, access career-related information, and interact with the AI Assistant for useful career guidance through a clear and responsive interface.
-
-
 
