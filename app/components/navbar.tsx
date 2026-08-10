@@ -1,11 +1,13 @@
 "use client";
+
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { Search, Bell, User, X, Menu } from "lucide-react";
 
 export default function Navbar() {
     const router = useRouter();
+    const pathname = usePathname();
 
     const [showSearch, setShowSearch] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
@@ -44,102 +46,126 @@ export default function Navbar() {
                 item.title.toLowerCase().includes(search.toLowerCase())
             );
 
+    const navLinks = [
+        { name: "Home", href: "/" },
+        { name: "About", href: "/about" },
+        { name: "Internships", href: "/internship" },
+        { name: "Jobs", href: "/jobs" },
+        { name: "Companies", href: "/companies" },
+        { name: "Contact", href: "/contact" },
+    ];
+
     return (
         <>
-            <nav className="sticky top-0 z-50 bg-[#081C2B] border-b border-[#D4C08A]/20 backdrop-blur">
-                <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+            <nav className="sticky top-0 z-50 border-b border-[#D4C08A]/20 bg-[#081C2B] backdrop-blur">
+
+                <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
 
                     {/* Logo */}
                     <Link
                         href="/"
-                        className="text-2xl font-bold text-[#D4C08A]"
+                        className="text-2xl font-bold text-[#D4C08A] transition-all duration-300 hover:scale-105 hover:text-[#f1df9d]"
                     >
                         SkillBridge
                     </Link>
 
+
                     {/* Navigation */}
-                    <div className="hidden md:flex items-center gap-8">
+                    <div className="hidden items-center gap-8 md:flex">
 
-                        <Link href="/" className="text-white hover:text-[#D4C08A]">
-                            Home
-                        </Link>
+                        {navLinks.map((link) => {
+                            const isActive = pathname === link.href;
 
-                        <Link href="/about" className="text-white hover:text-[#D4C08A]">
-                            About
-                        </Link>
+                            return (
+                                <Link
+                                    key={link.href}
+                                    href={link.href}
+                                    className={`group relative py-2 font-medium transition-all duration-300
+                                        ${isActive
+                                            ? "text-[#D4C08A]"
+                                            : "text-white hover:-translate-y-0.5 hover:text-[#D4C08A]"
+                                        }
+                                    `}
+                                >
+                                    {link.name}
 
-                        <Link href="/internship" className="text-white hover:text-[#D4C08A]">
-                            Internships
-                        </Link>
-
-                        <Link href="/jobs" className="text-white hover:text-[#D4C08A]">
-                            Jobs
-                        </Link>
-
-                        <Link href="/companies" className="text-white hover:text-[#D4C08A]">
-                            Companies
-                        </Link>
-
-                        <Link href="/contact" className="text-white hover:text-[#D4C08A]">
-                            Contact
-                        </Link>
+                                    {/* Animated underline */}
+                                    <span
+                                        className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-[#D4C08A] transition-all duration-300
+                                            ${isActive
+                                                ? "w-full"
+                                                : "w-0 group-hover:w-full"
+                                            }
+                                        `}
+                                    />
+                                </Link>
+                            );
+                        })}
 
                     </div>
 
+
                     {/* Right Side */}
                     <div className="flex items-center gap-4">
+
                         {/* Mobile Menu */}
                         <button
-                            aria-label={showMenu ? "Close navigation menu" : "Open navigation menu"}
+                            aria-label={
+                                showMenu
+                                    ? "Close navigation menu"
+                                    : "Open navigation menu"
+                            }
                             onClick={() => setShowMenu(!showMenu)}
-                            className="md:hidden p-2 rounded-full hover:bg-[#10293D] transition"
+                            className="rounded-full p-2 transition-all duration-300 hover:bg-[#10293D] md:hidden"
                         >
                             {showMenu ? (
                                 <X
                                     size={24}
-                                    className="text-white hover:text-[#D4C08A]"
+                                    className="text-white transition-colors duration-300 hover:text-[#D4C08A]"
                                 />
                             ) : (
                                 <Menu
                                     size={24}
-                                    className="text-white hover:text-[#D4C08A]"
+                                    className="text-white transition-colors duration-300 hover:text-[#D4C08A]"
                                 />
                             )}
                         </button>
+
+
                         {/* Search */}
                         <button
                             aria-label="Open search"
                             onClick={() => setShowSearch(!showSearch)}
-                            className="p-2 rounded-full hover:bg-[#10293D] transition"
+                            className="group rounded-full p-2 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#10293D]"
                         >
                             <Search
                                 size={22}
-                                className="text-white hover:text-[#D4C08A]"
+                                className="text-white transition-colors duration-300 group-hover:text-[#D4C08A]"
                             />
                         </button>
+
 
                         {/* Bell */}
                         <button
                             aria-label="Notifications"
-                            className="relative p-2 rounded-full hover:bg-[#10293D] transition"
+                            className="group relative rounded-full p-2 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#10293D]"
                         >
-
                             <Bell
                                 size={22}
-                                className="text-white hover:text-[#D4C08A]"
+                                className="text-white transition-colors duration-300 group-hover:text-[#D4C08A]"
                             />
 
-                            <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-500 text-white text-[10px] flex items-center justify-center">
+                            <span className="absolute -right-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] text-white">
                                 3
                             </span>
-
                         </button>
+
 
                         {/* Profile */}
                         <button
                             aria-label="Open login"
                             onClick={() => setShowLogin(true)}
-                            className="w-10 h-10 rounded-full bg-[#D4C08A] flex items-center justify-center hover:scale-105 transition"
+                            className="flex h-10 w-10 items-center justify-center rounded-full bg-[#D4C08A] transition-all duration-300 hover:scale-110 hover:bg-[#e5d39a] hover:shadow-lg hover:shadow-[#D4C08A]/20"
                         >
                             <User
                                 size={20}
@@ -150,70 +176,54 @@ export default function Navbar() {
                     </div>
 
                 </div>
+
+
                 {/* Mobile Navigation */}
                 {showMenu && (
-                    <div className="md:hidden border-t border-[#D4C08A]/20 bg-[#081C2B]">
+                    <div className="border-t border-[#D4C08A]/20 bg-[#081C2B] md:hidden">
 
-                        <div className="flex flex-col px-6 py-4 space-y-4">
+                        <div className="flex flex-col space-y-4 px-6 py-4">
 
-                            <Link
-                                href="/"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                Home
-                            </Link>
+                            {navLinks.map((link) => {
+                                const isActive = pathname === link.href;
 
-                            <Link
-                                href="/about"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                About
-                            </Link>
+                                return (
+                                    <Link
+                                        key={link.href}
+                                        href={link.href}
+                                        onClick={() => setShowMenu(false)}
+                                        className={`group relative w-fit py-1 font-medium transition-all duration-300
+                                            ${isActive
+                                                ? "translate-x-1 text-[#D4C08A]"
+                                                : "text-white hover:translate-x-1 hover:text-[#D4C08A]"
+                                            }
+                                        `}
+                                    >
+                                        {link.name}
 
-                            <Link
-                                href="/internship"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                Internships
-                            </Link>
-
-                            <Link
-                                href="/jobs"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                Jobs
-                            </Link>
-
-                            <Link
-                                href="/companies"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                Companies
-                            </Link>
-
-                            <Link
-                                href="/contact"
-                                onClick={() => setShowMenu(false)}
-                                className="text-white hover:text-[#D4C08A]"
-                            >
-                                Contact
-                            </Link>
+                                        <span
+                                            className={`absolute bottom-0 left-0 h-[2px] rounded-full bg-[#D4C08A] transition-all duration-300
+                                                ${isActive
+                                                    ? "w-full"
+                                                    : "w-0 group-hover:w-full"
+                                                }
+                                            `}
+                                        />
+                                    </Link>
+                                );
+                            })}
 
                         </div>
 
                     </div>
                 )}
-                {/* Search Bar */}
 
+
+                {/* Search Bar */}
                 {showSearch && (
                     <div className="border-t border-[#D4C08A]/20">
 
-                        <div className="max-w-7xl mx-auto px-6 py-4">
+                        <div className="mx-auto max-w-7xl px-6 py-4">
 
                             <div className="relative">
 
@@ -227,10 +237,11 @@ export default function Navbar() {
                                     value={search}
                                     onChange={(e) => setSearch(e.target.value)}
                                     placeholder="Search internships, jobs or companies..."
-                                    className="w-full rounded-xl bg-[#10293D] border border-[#D4C08A]/20 py-3 pl-12 pr-12 text-white outline-none focus:border-[#D4C08A]"
+                                    className="w-full rounded-xl border border-[#D4C08A]/20 bg-[#10293D] py-3 pl-12 pr-12 text-white outline-none focus:border-[#D4C08A]"
                                 />
+
                                 {search.trim() !== "" && (
-                                    <div className="absolute left-0 right-0 mt-2 bg-[#10293D] border border-[#D4C08A]/20 rounded-xl shadow-xl overflow-hidden z-50">
+                                    <div className="absolute left-0 right-0 z-50 mt-2 overflow-hidden rounded-xl border border-[#D4C08A]/20 bg-[#10293D] shadow-xl">
 
                                         {filteredItems.length > 0 ? (
 
@@ -242,7 +253,7 @@ export default function Navbar() {
                                                         setSearch("");
                                                         setShowSearch(false);
                                                     }}
-                                                    className="w-full px-5 py-3 text-left text-white hover:bg-[#1B3B55] transition"
+                                                    className="w-full px-5 py-3 text-left text-white transition hover:bg-[#1B3B55] hover:text-[#D4C08A]"
                                                 >
                                                     {item.title}
                                                 </button>
@@ -252,11 +263,11 @@ export default function Navbar() {
 
                                             <div className="px-5 py-4 text-center">
 
-                                                <p className="text-gray-300 font-medium">
+                                                <p className="font-medium text-gray-300">
                                                     No results found
                                                 </p>
 
-                                                <p className="text-gray-500 text-sm mt-1">
+                                                <p className="mt-1 text-sm text-gray-500">
                                                     Try searching for internships, jobs, or companies.
                                                 </p>
 
@@ -274,7 +285,7 @@ export default function Navbar() {
                                 >
                                     <X
                                         size={20}
-                                        className="text-gray-400 hover:text-white"
+                                        className="text-gray-400 transition-colors hover:text-[#D4C08A]"
                                     />
                                 </button>
 
@@ -287,44 +298,44 @@ export default function Navbar() {
 
             </nav>
 
+
             {/* Login Modal */}
-
             {showLogin && (
-                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100]">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60">
 
-                    <div className="bg-[#10293D] rounded-3xl p-8 w-[420px] relative border border-[#D4C08A]/20">
+                    <div className="relative w-[420px] rounded-3xl border border-[#D4C08A]/20 bg-[#10293D] p-8">
 
                         <button
                             aria-label="Close login dialog"
                             onClick={() => setShowLogin(false)}
                             className="absolute right-5 top-5"
                         >
-                            <X className="text-white" />
+                            <X className="text-white transition-colors hover:text-[#D4C08A]" />
                         </button>
 
                         <h2 className="text-3xl font-bold text-[#D4C08A]">
                             Login
                         </h2>
 
-                        <p className="text-gray-400 mt-3">
+                        <p className="mt-3 text-gray-400">
                             Login to continue to SkillBridge.
                         </p>
 
-                        <div className="space-y-5 mt-8">
+                        <div className="mt-8 space-y-5">
 
                             <input
                                 type="email"
                                 placeholder="Email"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
                             <input
                                 type="password"
                                 placeholder="Password"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
-                            <button className="w-full bg-[#D4C08A] text-[#081C2B] rounded-xl py-3 font-semibold">
+                            <button className="w-full rounded-xl bg-[#D4C08A] py-3 font-semibold text-[#081C2B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e5d39a] hover:shadow-lg hover:shadow-[#D4C08A]/20">
                                 Login
                             </button>
 
@@ -349,57 +360,58 @@ export default function Navbar() {
 
                 </div>
             )}
+
+
             {/* Register Modal */}
-
             {showRegister && (
-                <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-[100]">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60">
 
-                    <div className="bg-[#10293D] rounded-3xl p-8 w-[420px] relative border border-[#D4C08A]/20">
+                    <div className="relative w-[420px] rounded-3xl border border-[#D4C08A]/20 bg-[#10293D] p-8">
 
                         <button
                             aria-label="Close registration dialog"
                             onClick={() => setShowRegister(false)}
                             className="absolute right-5 top-5"
                         >
-                            <X className="text-white" />
+                            <X className="text-white transition-colors hover:text-[#D4C08A]" />
                         </button>
 
                         <h2 className="text-3xl font-bold text-[#D4C08A]">
                             Create Account
                         </h2>
 
-                        <p className="text-gray-400 mt-3">
+                        <p className="mt-3 text-gray-400">
                             Join SkillBridge and start your career journey.
                         </p>
 
-                        <div className="space-y-5 mt-8">
+                        <div className="mt-8 space-y-5">
 
                             <input
                                 type="text"
                                 placeholder="Full Name"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
                             <input
                                 type="email"
                                 placeholder="Email Address"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
                             <input
                                 type="password"
                                 placeholder="Password"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
                             <input
                                 type="password"
                                 placeholder="Confirm Password"
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                             />
 
                             <select
-                                className="w-full rounded-xl bg-[#081C2B] border border-gray-600 px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
+                                className="w-full rounded-xl border border-gray-600 bg-[#081C2B] px-5 py-3 text-white outline-none focus:border-[#D4C08A]"
                                 defaultValue=""
                             >
                                 <option value="" disabled>
@@ -409,7 +421,7 @@ export default function Navbar() {
                                 <option>Company</option>
                             </select>
 
-                            <button className="w-full bg-[#D4C08A] text-[#081C2B] rounded-xl py-3 font-semibold hover:opacity-90 transition">
+                            <button className="w-full rounded-xl bg-[#D4C08A] py-3 font-semibold text-[#081C2B] transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#e5d39a] hover:shadow-lg hover:shadow-[#D4C08A]/20">
                                 Create Account
                             </button>
 
@@ -434,6 +446,8 @@ export default function Navbar() {
 
                 </div>
             )}
+
         </>
     );
 }
+

@@ -21,7 +21,9 @@ export default function FloatingAssistant() {
         <>
             {/* AI Assistant Card */}
             {!isOpen && (
-                <div
+                <button
+                    type="button"
+                    aria-label="AI Assistant"
                     onClick={() => setIsOpen(true)}
                     className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 cursor-pointer"
                 >
@@ -38,10 +40,10 @@ export default function FloatingAssistant() {
                         </div>
 
                     </div>
-                </div>
+                </button>
             )}
 
-            {/* Full Screen Chat */}
+            {/* Full Screen Chat */}    
             {isOpen && (
                 <div className="fixed inset-0 z-[9999] bg-[#081C2B]">
 

@@ -33,7 +33,7 @@ export default function HomePage() {
                 href="/internship"
                 className="rounded-xl bg-[#D4C08A] px-5 sm:px-6 py-3 text-center font-semibold text-sm sm:text-base text-[#081C2B] hover:opacity-90 transition"
               >
-                Explore Internships
+                Explore Internships →
               </Link>
 
               <Link

@@ -1,3 +1,5 @@
+import { MapPin, ArrowRight } from "lucide-react";
+
 export default function InternshipPage() {
   const internships = [
     {
@@ -24,68 +26,206 @@ export default function InternshipPage() {
       location: "Ireland",
       type: "Remote",
     },
-     {
+    {
       title: "Frontend (Next.js) Intern",
       company: "DotClick",
-      location: "karachi, Pakistan",
-      type: "on-site",
+      location: "Karachi, Pakistan",
+      type: "On-site",
     },
-     {
+    {
       title: "Backend Dev Intern",
       company: "Quanrio LLP",
-      location: "karachi, Pakistan",
+      location: "Karachi, Pakistan",
       type: "Remote",
     },
   ];
 
   return (
-    <main className="min-h-screen bg-background text-foreground px-6 py-12">
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen bg-[#081C2B] text-white">
 
-        {/* Header */}
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#D4C08A]">
-            Internship Opportunities
-          </h1>
+      {/* Hero / Header */}
+      <section className="relative overflow-hidden">
 
-          <p className="mt-4 max-w-2xl mx-auto text-gray-300 text-lg">
-            Explore internships from leading companies and gain valuable
-            real-world experience to kick-start your career.
-          </p>
-        </div>
+        {/* Background Glow */}
+        <div className="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-[#D4C08A]/10 blur-3xl" />
 
-        {/* Cards */}
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-2">
+        <div className="absolute right-0 top-40 h-72 w-72 rounded-full bg-cyan-500/5 blur-3xl" />
 
-          {internships.map((job, index) => (
-            <div
-              key={index}
-              className="bg-[#10293D] border border-[#D4C08A]/20 rounded-2xl p-6 hover:border-[#D4C08A] transition duration-300"
-            >
-              <h2 className="text-2xl font-semibold text-[#D4C08A]">
-                {job.title}
-              </h2>
+        <div className="relative mx-auto max-w-7xl px-6 py-20 md:px-10 md:py-24">
 
-              <p className="mt-3 text-gray-300">
-                <strong>Company:</strong> {job.company}
-              </p>
+          <div className="mx-auto max-w-3xl text-center">
 
-              <p className="text-gray-300">
-                <strong>Location:</strong> {job.location}
-              </p>
+            {/* Badge */}
+            <div className="group mx-auto mb-6 inline-flex cursor-default items-center gap-3 rounded-full border border-[#D4C08A]/20 bg-[#D4C08A]/5 px-4 py-2 transition-all duration-300 hover:border-[#D4C08A]/50 hover:bg-[#D4C08A]/10 hover:shadow-lg hover:shadow-[#D4C08A]/10">
 
-              <p className="text-gray-300">
-                <strong>Type:</strong> {job.type}
-              </p>
+              <span className="h-2 w-2 rounded-full bg-[#D4C08A] transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_12px_#D4C08A]" />
 
-              <button className="mt-6 w-full rounded-xl bg-[#D4C08A] text-[#081C2B] py-3 font-semibold hover:opacity-90 transition">
-                Apply Now
-              </button>
+              <span className="text-xs font-semibold tracking-[0.2em] text-[#D4C08A] sm:text-sm">
+                CAREER OPPORTUNITIES
+              </span>
+
             </div>
-          ))}
+
+
+            {/* Heading */}
+            <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+              Internship{" "}
+              <span className="bg-gradient-to-r from-[#D4C08A] to-[#f1df9d] bg-clip-text text-transparent">
+                Opportunities
+              </span>
+            </h1>
+
+
+            {/* Description */}
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-8 text-gray-300 sm:text-lg">
+              Explore internships from leading companies and gain valuable
+              real-world experience to kick-start your career.
+            </p>
+
+          </div>
+
+
+          {/* Internship Count */}
+          <div className="mx-auto mt-10 flex w-fit items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-5 py-2.5 text-sm text-gray-400">
+
+            <span className="font-semibold text-[#D4C08A]">
+              {internships.length}
+            </span>
+
+            internship opportunities available
+
+          </div>
 
         </div>
-      </div>
+      </section>
+
+
+      {/* Internship Cards */}
+      <section className="relative pb-24">
+
+        <div className="mx-auto max-w-7xl px-6 md:px-10">
+
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+            {internships.map((job, index) => (
+
+              <div
+                key={index}
+                className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-[#D4C08A]/15 bg-[#0d2739] p-6 transition-all duration-500 hover:-translate-y-2 hover:border-[#D4C08A]/50 hover:bg-[#102c40] hover:shadow-[0_20px_50px_rgba(212,192,138,0.10)] sm:p-7"
+              >
+
+                {/* Card Glow */}
+                <div className="absolute -right-16 -top-16 h-32 w-32 rounded-full bg-[#D4C08A]/5 blur-3xl transition-all duration-500 group-hover:bg-[#D4C08A]/15" />
+
+
+                {/* Top Row */}
+                <div className="relative flex items-start justify-between gap-4">
+
+                  {/* Number */}
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#D4C08A]/20 bg-[#D4C08A]/5 text-sm font-bold text-[#D4C08A] transition-all duration-300 group-hover:scale-110 group-hover:border-[#D4C08A]/50 group-hover:bg-[#D4C08A]/10">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
+
+
+                  {/* Type Badge */}
+                  <span className="rounded-full border border-[#D4C08A]/20 bg-[#D4C08A]/5 px-3 py-1 text-xs font-medium text-[#D4C08A] transition-all duration-300 group-hover:border-[#D4C08A]/40 group-hover:bg-[#D4C08A]/10">
+                    {job.type}
+                  </span>
+
+                </div>
+
+
+                {/* Title */}
+                <h2 className="relative mt-7 text-xl font-bold leading-snug text-white transition-colors duration-300 group-hover:text-[#D4C08A] sm:text-2xl">
+                  {job.title}
+                </h2>
+
+
+                {/* Company */}
+                <p className="relative mt-3 text-gray-300">
+                  <span className="font-semibold text-gray-200">
+                    {job.company}
+                  </span>
+                </p>
+
+
+                {/* Location */}
+                <div className="relative mt-5 flex items-center gap-2 text-sm text-gray-400">
+
+                  <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-white/[0.04] transition-all duration-300 group-hover:bg-[#D4C08A]/10">
+
+                    <MapPin
+                      size={17}
+                      className="text-[#D4C08A] transition-transform duration-300 group-hover:scale-110"
+                    />
+
+                  </span>
+
+                  <span className="transition-colors duration-300 group-hover:text-gray-300">
+                    {job.location}
+                  </span>
+
+                </div>
+
+
+                {/* Divider */}
+                <div className="relative my-6 h-px bg-white/5 transition-all duration-500 group-hover:bg-[#D4C08A]/20" />
+
+
+                {/* Apply Button */}
+                <button
+                  className="group/button relative mt-auto flex w-full items-center justify-center gap-2 rounded-xl bg-[#D4C08A] py-3.5 font-semibold text-[#081C2B] transition-all duration-300 hover:-translate-y-1 hover:bg-[#e5d39a] hover:shadow-lg hover:shadow-[#D4C08A]/20 active:scale-95"
+                >
+
+                  Apply Now
+
+                  <ArrowRight
+                    size={18}
+                    className="transition-transform duration-300 group-hover/button:translate-x-1"
+                  />
+
+                </button>
+
+              </div>
+
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* Bottom CTA */}
+      <section className="mx-auto max-w-7xl px-6 pb-24 md:px-10">
+
+        <div className="group relative overflow-hidden rounded-3xl border border-[#D4C08A]/15 bg-gradient-to-br from-[#0d2739] to-[#081C2B] p-8 text-center transition-all duration-500 hover:border-[#D4C08A]/35 hover:shadow-[0_20px_60px_rgba(212,192,138,0.08)] md:p-12">
+
+          <div className="absolute -right-20 -top-20 h-60 w-60 rounded-full bg-[#D4C08A]/5 blur-3xl transition-all duration-500 group-hover:bg-[#D4C08A]/10" />
+
+          <div className="relative">
+
+            <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#D4C08A]">
+              Find Your Opportunity
+            </p>
+
+            <h2 className="mt-4 text-3xl font-bold sm:text-4xl">
+              Your career journey starts here.
+            </h2>
+
+            <p className="mx-auto mt-4 max-w-2xl leading-7 text-gray-400">
+              Explore opportunities, gain practical experience, and take
+              your first step toward a successful career.
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
     </main>
   );
 }
+
