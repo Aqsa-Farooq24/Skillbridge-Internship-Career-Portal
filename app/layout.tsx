@@ -21,6 +21,23 @@ export const metadata: Metadata = {
   title: "SkillBridge - Internship & Career Portal",
   description:
     "A modern internship and career portal for students and companies.",
+
+  openGraph: {
+    title: "SkillBridge - Internship & Career Portal",
+    description:
+      "A modern internship and career portal for students and companies.",
+    type: "website",
+    siteName: "SkillBridge",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "SkillBridge - Internship & Career Portal",
+      },
+    ],
+  },
+
   robots: {
     index: true,
     follow: true,
