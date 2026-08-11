@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -49,6 +50,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1 relative w-full min-w-0">
           {children}
+          <Analytics />
         </main>
         <Footer />
       </body>
