@@ -38,25 +38,25 @@ The V2 version of SkillBridge was evaluated using representative career-assistan
 
 
 
-| Evaluation Area                | Result |
+| Evaluation Area               | Result |
 
-| ------------------------------ | ------ |
+| ----------------------------- | ------ |
 
-| Internship guidance            | Pass   |
+| Internship guidance           | Pass   |
 
-| Career guidance                | Pass   |
+| Career guidance               | Pass   |
 
-| Interview preparation          | Pass   |
+| Interview preparation         | Pass   |
 
-| Resume analysis tool           | Pass   |
+| Resume analysis tool          | Pass   |
 
-| Job-role input validation      | Pass   |
+| Job-role input validation     | Pass   |
 
-| Long/invalid request handling  | Pass   |
+| Long/invalid request handling | Pass   |
 
-| AI response streaming          | Pass   |
+| AI response streaming         | Pass   |
 
-| Career-focused system behavior | Pass   |
+| Career-focused system behavior| Pass   |
 
 
 
@@ -151,6 +151,4 @@ Live SkillBridge Project: https://skillbridge-internship-career-porta.vercel.app
 
 
 Live Personal Portfolio: https://personal-portfolio-eight-gamma-64.vercel.app/
-
-
 
