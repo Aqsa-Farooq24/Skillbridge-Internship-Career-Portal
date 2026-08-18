@@ -98,8 +98,6 @@ Completed FlyRank hours log based on actual work completed during the track.
 
 HOURS LOG URL: https://drive.google.com/file/d/1Amhws6jgpIFGyE7S-tZ0chpb22n\_QouV/view?usp=sharing
 
-
-
 7\. Live Personal Site
 
 
