@@ -30,7 +30,7 @@ DEMO VIDEO URl: https://youtu.be/Gx4EIyUl3RI
 
 
 
-3\. V2 Evaluation Results
+3\. ## V2 Evaluation Results
 
 
 
@@ -61,8 +61,6 @@ The V2 version of SkillBridge was evaluated using representative career-assistan
 
 
 The evaluation confirmed that the V2 agent can handle its main intended career-support tasks while applying the implemented request limits and tool validation.
-
-
 
 4\. Case Study
 
