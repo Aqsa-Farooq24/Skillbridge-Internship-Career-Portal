@@ -1,4 +1,4 @@
-SkillBridge — Final Submission Index
+\# SkillBridge — Final Submission Index
 
 
 
@@ -6,7 +6,11 @@ This index brings together the required deliverables for Assignment 8.1 (FL-09) 
 
 
 
-1\. README
+\---
+
+
+
+\## 1. README
 
 
 
@@ -14,11 +18,17 @@ Complete project documentation for SkillBridge, including the project overview, 
 
 
 
-View README.md: https://github.com/Aqsa-Farooq24/Skillbridge-Internship-Career-Portal/blob/main/README.md
+View README.md:  
+
+\[README.md URL]
 
 
 
-2\. Demo Video
+\---
+
+
+
+\## 2. Demo Video
 
 
 
@@ -26,11 +36,17 @@ A 3–5 minute live demonstration of SkillBridge showing the real application, i
 
 
 
-DEMO VIDEO URl: https://youtu.be/Gx4EIyUl3RI
+Demo Video URL:  
+
+\[DEMO VIDEO URL]
 
 
 
-3\. V2 Evaluation Results
+\---
+
+
+
+\## 3. V2 Evaluation Results
 
 
 
@@ -38,25 +54,25 @@ The V2 version of SkillBridge was evaluated using representative career-assistan
 
 
 
-| Evaluation Area               | Result |
+| Evaluation Area | Result |
 
-| ----------------------------- | ------ |
+|---|---|
 
-| Internship guidance           | Pass   |
+| Internship guidance | Pass |
 
-| Career guidance               | Pass   |
+| Career guidance | Pass |
 
-| Interview preparation         | Pass   |
+| Interview preparation | Pass |
 
-| Resume analysis tool          | Pass   |
+| Resume analysis tool | Pass |
 
-| Job-role input validation     | Pass   |
+| Job-role input validation | Pass |
 
-| Long/invalid request handling | Pass   |
+| Long/invalid request handling | Pass |
 
-| AI response streaming         | Pass   |
+| AI response streaming | Pass |
 
-| Career-focused system behavior| Pass   |
+| Career-focused system behavior | Pass |
 
 
 
@@ -64,7 +80,11 @@ The evaluation confirmed that the V2 agent can handle its main intended career-s
 
 
 
-4\. Case Study
+\---
+
+
+
+\## 4. Case Study
 
 
 
@@ -72,11 +92,17 @@ The SkillBridge capstone case study describing the problem, approach, implementa
 
 
 
-CASE STUDY URL: https://drive.google.com/file/d/1hrFSLZzScECCkOpZmXyAZQI5SsyUrFho/view?usp=sharing
+Case Study URL:  
+
+\[CASE STUDY URL]
 
 
 
-5\. Retrospective
+\---
+
+
+
+\## 5. Retrospective
 
 
 
@@ -84,11 +110,17 @@ A 500–800 word reflection written specifically about the SkillBridge build, in
 
 
 
-&#x20;RETROSPECTIVE URL: https://drive.google.com/file/d/1T6DcpHlAzHfhyMXGcCnY7qUEPw596UiE/view?usp=sharing
+Retrospective URL:  
+
+\[RETROSPECTIVE URL]
 
 
 
-6\. Hours Log Evidence
+\---
+
+
+
+\## 6. Hours Log Evidence
 
 
 
@@ -96,21 +128,35 @@ Completed FlyRank hours log based on actual work completed during the track.
 
 
 
-HOURS LOG URL: https://drive.google.com/file/d/1Amhws6jgpIFGyE7S-tZ0chpb22n\_QouV/view?usp=sharing
+Hours Log URL:  
 
-7\. Live Personal Site
-
-
-
-My personal portfolio website is live on a clean Vercel subdomain, which is the free-subdomain fallback allowed by the Week 9 brief when budget is truly zero.
+\[HOURS LOG URL]
 
 
 
-LIVE PERSONAL SITE URL: https://personal-portfolio-eight-gamma-64.vercel.app/
+\---
 
 
 
-8\. Build-in-Public Post
+\## 7. Live Personal Site
+
+
+
+My personal portfolio website is live on a clean Vercel subdomain, which is the free-subdomain fallback allowed by the Week 9 brief when the budget is truly zero.
+
+
+
+Live Personal Site URL:  
+
+\[LIVE PERSONAL SITE URL]
+
+
+
+\---
+
+
+
+\## 8. Build-in-Public Post
 
 
 
@@ -118,11 +164,17 @@ Public post sharing the SkillBridge build story, including one real design decis
 
 
 
-BUILD-IN-PUBLIC POST URL: https://lnkd.in/p/dSBTCysY
+Build-in-Public Post URL:  
+
+\[BUILD-IN-PUBLIC POST URL]
 
 
 
-9\. Final Review / Sign-off
+\---
+
+
+
+\## 9. Final Review / Sign-off
 
 
 
@@ -130,23 +182,25 @@ Evidence of the required final human review checkpoint and sign-off.
 
 
 
-STATUS: PENDING FINAL REVIEW
+Status: PENDING FINAL REVIEW
 
 
 
-
-
-Project Links
-
-&#x20;
-
-View SkillBridge GitHub Repository: https://github.com/Aqsa-Farooq24/Skillbridge-Internship-Career-Portal
+\---
 
 
 
-Live SkillBridge Project: https://skillbridge-internship-career-porta.vercel.app/
+\# Project Links
 
 
 
-Live Personal Portfolio: https://personal-portfolio-eight-gamma-64.vercel.app/
+| Resource | Link |
+
+|---|---|
+
+| SkillBridge GitHub Repository | \[GitHub Repository URL] |
+
+| Live SkillBridge Project | \[Live SkillBridge URL] |
+
+| Live Personal Portfolio | \[Live Personal Portfolio URL] |
 
