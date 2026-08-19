@@ -30,7 +30,7 @@ DEMO VIDEO URl: https://youtu.be/Gx4EIyUl3RI
 
 
 
-3\. ## V2 Evaluation Results
+3\. V2 Evaluation Results
 
 
 
